@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\LoginRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Support\Facades\Auth;
 class RegistroController extends Controller
 {
     
@@ -29,5 +29,13 @@ class RegistroController extends Controller
                 'res' =>true,
                 'token' => $token
             ],201);
+    }
+
+    public function logout(){
+        $user = Auth::where('id',Auth::user()->id)->first();
+        $user->tokens()->delete();
+        return response([
+            'message'=>'Token eliminado'
+        ]);  
     }
 }
