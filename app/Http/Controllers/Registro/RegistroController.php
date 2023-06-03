@@ -14,7 +14,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 use PhpParser\Node\Stmt\Foreach_;
-
+use Illuminate\Support\Facades\Auth;
 
 class RegistroController extends Controller
 {
@@ -48,7 +48,7 @@ class RegistroController extends Controller
         $token = $user->createToken('Token')->plainTextToken;
         $email = $request->email;
         $mail = new PHPMailer(true);
-
+     
         try {
             $mail->SMTPDebug = SMTP::DEBUG_SERVER;
             echo("paso");
@@ -79,17 +79,24 @@ class RegistroController extends Controller
             $mail->send();
             echo("paso");
         } catch (Exception $e) {
-
+            
             return response()->json([
                 'res' => false,
                 'mensaje' => 'Ocurrio Un Problemas con los datos',
                 'status' => 500,
-
+                
             ],500);
 
         }
 
         return response()->json(['token' => $token, 'user'=> $user], 200);
-
+        
+    }
+    public function logout(){
+        $user = Auth::where('id',Auth::user()->id)->first();
+        $user->tokens()->delete();
+        return response([
+            'message'=>'Token eliminado'
+        ]);  
     }
 }
