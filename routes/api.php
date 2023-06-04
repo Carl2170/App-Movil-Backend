@@ -24,7 +24,7 @@ Route::post('/login',[RegistroController::class,'login']);
 Route::post('/register',[RegistroController::class, 'register']);
 Route::get('/logout',[RegistroController::class,'logout']); 
 
-
+//cambios 
 
 
 
