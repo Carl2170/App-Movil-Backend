@@ -69,8 +69,8 @@ return [
     |
     */
 
-    // 'timezone' => 'UTC',
-    'timezone' => 'America/La_Paz',
+     'timezone' => 'UTC',
+    // 'timezone' => 'America/La_Paz',
 
     
 

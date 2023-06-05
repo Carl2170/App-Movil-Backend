@@ -113,7 +113,8 @@ class RegistroController extends Controller
        
         $horaActual = Carbon::now();
         $minutos = $horaActual->diffInMinutes($user->tiempo_codigo);
-            if($minutos<=1){
+           
+        if($minutos<=1){
                 if($request['codigo'] == $user->codigo_de_verificacion){
                     $user->verificacion_email=1;
                     $user->estado=1;
@@ -127,13 +128,17 @@ class RegistroController extends Controller
                     return response()->json([
                         'res' => False,
                         'mensaje' => 'Codigo de Verificacion incorrecto'
+                    
                     ]);
                 }
             }
         
         return response()->json([
             'res' => False,
-            'mensje' => 'Tiempo de verificacion excedido'
+            'mensaje' => 'Tiempo de verificacion excedido',
+            'tiempo' => $minutos,
+            'hora'=>$horaActual,
+            'chima'=>$user->tiempo_codigo
         ]);
 
     }
