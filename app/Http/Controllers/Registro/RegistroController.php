@@ -28,7 +28,7 @@ class RegistroController extends Controller
                 return response()->json([
                     'res' => false,
                     'mensaje' => "Datos incorrectos",
-                    'email' => $request['email']->email
+                    'email' => $request['email']
                 ]);
             }
             $token = $user->createToken($request['email'])->plainTextToken;
