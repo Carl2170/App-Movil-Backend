@@ -25,7 +25,8 @@ class User extends Authenticatable
         'verificacion_email',
         'ultimo_inicio_sesion',
         'codigo_de_verificacion',
-        'estado'
+        'estado',
+        'tiempo_codigo'
         
     ];
 
