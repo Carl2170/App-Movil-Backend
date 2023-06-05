@@ -26,11 +26,9 @@ return new class extends Migration
             $table->timestamp('ultimo_inicio_sesion')->nullable();
         //nuevos atributos   
             $table->unsignedBigInteger('codigo_de_verificacion')->nullable();
-            $table->dateTime('tiempo_codigo');
             $table->boolean('estado')->nullable();
-
-
             $table->timestamps();
+            $table->dateTime('tiempo_codigo');
         });
     }
 
