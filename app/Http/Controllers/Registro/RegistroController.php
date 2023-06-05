@@ -113,7 +113,7 @@ class RegistroController extends Controller
        
         $horaActual = Carbon::now();
         $minutos = $horaActual->diffInMinutes($user->tiempo_codigo);
-            if($minutos<=1){
+            if($minutos<=10){
                 if($request['codigo'] == $user->codigo_de_verificacion){
                     $user->verificacion_email=1;
                     $user->estado=1;
