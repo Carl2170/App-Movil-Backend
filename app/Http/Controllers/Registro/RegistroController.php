@@ -121,7 +121,10 @@ class RegistroController extends Controller
                     $user->save();
                     return response()->json([
                         'res' => True,
-                        'mensaje' => 'Verificacion Exitosa'
+                        'mensaje' => 'Verificacion Exitosa',
+                        'tiempo' => $minutos,
+                        'hora'=>$horaActual,
+                        'chima'=>$user->tiempo_codigo
                     ]);
                 }
                 else{
